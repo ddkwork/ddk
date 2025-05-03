@@ -1,11 +1,14 @@
+//go:build windows
+
 package cve
 
 import (
 	"errors"
-	"github.com/ddkwork/ddk/ntdll"
-	"golang.org/x/sys/windows"
 	"iter"
 	"unsafe"
+
+	"github.com/ddkwork/ddk/ntdll"
+	"golang.org/x/sys/windows"
 )
 
 // var (

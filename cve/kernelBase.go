@@ -1,8 +1,11 @@
+//go:build windows
+
 package cve
 
 import (
-	"golang.org/x/sys/windows"
 	"iter"
+
+	"golang.org/x/sys/windows"
 )
 
 func GetKernelBase() ProcessModuleInformation {
