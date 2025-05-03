@@ -1,3 +1,5 @@
+//go:build windows
+
 package vstart
 
 import (
@@ -108,5 +110,5 @@ func New() ux.Widget {
 		return err
 	}))
 	return flow
-	//ux.RunTest("VStart", flow)
+	// ux.RunTest("VStart", flow)
 }
