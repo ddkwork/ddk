@@ -4,8 +4,8 @@
 package ntdll
 
 import (
-	"unsafe"
 	"reflect"
+	"unsafe"
 )
 
 // The ObjectInformationClass constants have been derived from the OBJECT_INFORMATION_CLASS enum definition.

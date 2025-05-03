@@ -4,8 +4,8 @@
 package ntdll
 
 import (
-	"unsafe"
 	"reflect"
+	"unsafe"
 )
 
 // The MemoryInformationClass constants have been derived from the MEMORY_INFORMATION_CLASS enum definition.

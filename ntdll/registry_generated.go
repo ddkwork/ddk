@@ -4,8 +4,8 @@
 package ntdll
 
 import (
-	"unsafe"
 	"reflect"
+	"unsafe"
 )
 
 // The KeyInformationClass constants have been derived from the KEY_INFORMATION_CLASS enum definition.

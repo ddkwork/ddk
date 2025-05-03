@@ -4,8 +4,8 @@
 package ntdll
 
 import (
-	"unsafe"
 	"reflect"
+	"unsafe"
 )
 
 // The AtomInformationClass constants have been derived from the ATOM_INFORMATION_CLASS enum definition.

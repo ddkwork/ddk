@@ -1257,7 +1257,6 @@ func New() ux.Widget {
 	return t
 
 	// ux.RunTest("计件表", t)
-
 }
 
 type (

@@ -4,8 +4,8 @@
 package ntdll
 
 import (
-	"unsafe"
 	"reflect"
+	"unsafe"
 )
 
 // The FileInformationClass constants have been derived from the FILE_INFORMATION_CLASS enum definition.
