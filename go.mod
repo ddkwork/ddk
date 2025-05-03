@@ -15,7 +15,7 @@ require (
 	github.com/saferwall/pe v1.5.6
 	github.com/shirou/gopsutil/v3 v3.24.5
 	github.com/spyre-project/spyre v1.2.5
-	golang.org/x/arch v0.16.0
+	golang.org/x/arch v0.16.1-0.20250430154214-ca84b2ccdbe0
 	golang.org/x/sys v0.32.0
 )
 
