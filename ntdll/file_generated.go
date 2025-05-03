@@ -3,8 +3,10 @@
 
 package ntdll
 
-import "unsafe"
-import "reflect"
+import (
+	"unsafe"
+	"reflect"
+)
 
 // The FileInformationClass constants have been derived from the FILE_INFORMATION_CLASS enum definition.
 type FileInformationClass uint32

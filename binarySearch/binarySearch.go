@@ -70,10 +70,10 @@ func ParsePattern(pattern string) *Pattern {
 		p.Masks[i] = mask
 
 		// Debug statements
-		//fmt.Printf("Chunk: %s, Mask: %02X, Value: %02X\n", chunk, mask, value)
+		// fmt.Printf("Chunk: %s, Mask: %02X, Value: %02X\n", chunk, mask, value)
 	}
 
-	//fmt.Printf("Parsed Pattern: Bytes=%v, Masks=%v, FirstIndex=%d\n", p.Bytes, p.Masks, p.FirstIndex)
+	// fmt.Printf("Parsed Pattern: Bytes=%v, Masks=%v, FirstIndex=%d\n", p.Bytes, p.Masks, p.FirstIndex)
 	return p
 }
 
@@ -137,7 +137,7 @@ func searchChunk(chunk []byte, pattern *Pattern) <-chan int {
 
 			if match {
 				// Debug statement
-				//fmt.Printf("Match found at chunk offset: %d\n", i)
+				// fmt.Printf("Match found at chunk offset: %d\n", i)
 				ch <- i
 			}
 		}

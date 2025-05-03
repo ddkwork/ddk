@@ -51,6 +51,8 @@ NTSTATUS LsaClose(
 );
 */
 
-type LsaUnicodeString UnicodeString
-type LsaHandle Handle
-type LsaObjectAttributes ObjectAttributes
+type (
+	LsaUnicodeString    UnicodeString
+	LsaHandle           Handle
+	LsaObjectAttributes ObjectAttributes
+)

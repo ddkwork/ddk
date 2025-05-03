@@ -3,8 +3,10 @@
 
 package ntdll
 
-import "unsafe"
-import "reflect"
+import (
+	"unsafe"
+	"reflect"
+)
 
 // The SystemInformationClass constants have been derived from the SYSTEM_INFORMATION_CLASS enum definition.
 type SystemInformationClass uint32

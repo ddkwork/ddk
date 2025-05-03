@@ -3,8 +3,10 @@
 
 package ntdll
 
-import "unsafe"
-import "reflect"
+import (
+	"unsafe"
+	"reflect"
+)
 
 var (
 	procNtQuerySecurityObject = modntdll.NewProc("NtQuerySecurityObject")

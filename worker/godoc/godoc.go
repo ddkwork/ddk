@@ -1,8 +1,6 @@
 package godoc
 
 import (
-	"gioui.org/layout"
-	"github.com/ddkwork/ux"
 	"go/ast"
 	"go/parser"
 	"go/token"
@@ -10,6 +8,9 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"gioui.org/layout"
+	"github.com/ddkwork/ux"
 
 	"github.com/ddkwork/golibrary/mylog"
 )
@@ -28,13 +29,10 @@ func Layout(libDir string) ux.Widget {
 	t.TableContext = ux.TableContext[Godoc]{
 		CustomContextMenuItems: func(gtx layout.Context, n *ux.Node[Godoc]) iter.Seq[ux.ContextMenuItem] {
 			return func(yield func(ux.ContextMenuItem) bool) {
-
 			}
 		},
 		MarshalRowCells: func(n *ux.Node[Godoc]) (cells []ux.CellData) {
-
 			return ux.MarshalRow(n.Data, func(key string, field any) (value string) {
-
 				return ""
 			})
 		},
@@ -47,10 +45,8 @@ func Layout(libDir string) ux.Widget {
 			})
 		},
 		RowSelectedCallback: func() {
-
 		},
 		RowDoubleClickCallback: func() {
-
 		},
 		SetRootRowsCallBack: func() {
 			mylog.Check(os.Chdir(libDir))

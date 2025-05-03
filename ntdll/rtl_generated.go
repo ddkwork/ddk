@@ -5,9 +5,7 @@ package ntdll
 
 import "unsafe"
 
-var (
-	procRtlDosPathNameToNtPathName_U = modntdll.NewProc("RtlDosPathNameToNtPathName_U")
-)
+var procRtlDosPathNameToNtPathName_U = modntdll.NewProc("RtlDosPathNameToNtPathName_U")
 
 // RtlRelativeNameU has been derived from the RTL_RELATIVE_NAME_U struct definition.
 type RtlRelativeNameU struct {

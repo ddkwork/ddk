@@ -2,15 +2,16 @@ package environment
 
 import (
 	_ "embed"
+	"iter"
+	"os"
+	"path/filepath"
+	"strings"
+
 	"gioui.org/layout"
 	"github.com/ddkwork/golibrary/mylog"
 	"github.com/ddkwork/golibrary/stream"
 	"github.com/ddkwork/ux"
 	"golang.org/x/sys/windows/registry"
-	"iter"
-	"os"
-	"path/filepath"
-	"strings"
 )
 
 //go:generate go build -x .
@@ -30,7 +31,6 @@ func Layout() ux.Widget {
 	t.TableContext = ux.TableContext[EnvironmentEditor]{
 		CustomContextMenuItems: func(gtx layout.Context, n *ux.Node[EnvironmentEditor]) iter.Seq[ux.ContextMenuItem] {
 			return func(yield func(ux.ContextMenuItem) bool) {
-
 			}
 		},
 		MarshalRowCells: func(n *ux.Node[EnvironmentEditor]) (cells []ux.CellData) {
@@ -63,10 +63,8 @@ func Layout() ux.Widget {
 			})
 		},
 		RowSelectedCallback: func() {
-
 		},
 		RowDoubleClickCallback: func() {
-
 		},
 		SetRootRowsCallBack: func() {
 			const EnvPath = `SYSTEM\CurrentControlSet\Control\Session Manager\Environment`

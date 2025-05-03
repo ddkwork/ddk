@@ -5,9 +5,7 @@ package ntdll
 
 import "unsafe"
 
-var (
-	procNtCreateThreadEx = modntdll.NewProc("NtCreateThreadEx")
-)
+var procNtCreateThreadEx = modntdll.NewProc("NtCreateThreadEx")
 
 // OUT-parameter: hThread, ThreadInfo.
 func NtCreateThreadEx(

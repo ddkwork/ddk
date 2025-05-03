@@ -1,4 +1,5 @@
-//+build ignore
+//go:build ignore
+// +build ignore
 
 // simple crawler to extract Status Codes from MSDN.
 package main
@@ -8,6 +9,7 @@ import (
 	"fmt"
 	"go/format"
 	"log"
+	"net/http"
 	"os"
 	"regexp"
 	"sort"
@@ -15,7 +17,6 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"net/http"
 )
 
 const URL = "https://msdn.microsoft.com/en-us/library/cc704588.aspx"
@@ -75,8 +76,8 @@ func main() {
 	// 	  state.</p>
 	// 	  </td></tr>
 
-	var n2s = map[uint64]string{}
-	var spaces = regexp.MustCompile("  *")
+	n2s := map[uint64]string{}
+	spaces := regexp.MustCompile("  *")
 	doc.Find("table tr").Each(func(i int, s *goquery.Selection) {
 		if i == 0 {
 			return // skip header

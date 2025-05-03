@@ -15,7 +15,6 @@ func New() ux.Widget {
 	t.TableContext = ux.TableContext[Task]{
 		CustomContextMenuItems: func(gtx layout.Context, n *ux.Node[Task]) iter.Seq[ux.ContextMenuItem] {
 			return func(yield func(ux.ContextMenuItem) bool) {
-
 			}
 		},
 		MarshalRowCells: func(n *ux.Node[Task]) (cells []ux.CellData) {
@@ -57,10 +56,8 @@ func New() ux.Widget {
 			})
 		},
 		RowSelectedCallback: func() {
-
 		},
 		RowDoubleClickCallback: func() {
-
 		},
 		SetRootRowsCallBack: func() {
 			getTasks(t.Root)

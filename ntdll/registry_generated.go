@@ -3,8 +3,10 @@
 
 package ntdll
 
-import "unsafe"
-import "reflect"
+import (
+	"unsafe"
+	"reflect"
+)
 
 // The KeyInformationClass constants have been derived from the KEY_INFORMATION_CLASS enum definition.
 type KeyInformationClass uint32

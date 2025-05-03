@@ -3,8 +3,10 @@
 
 package ntdll
 
-import "unsafe"
-import "reflect"
+import (
+	"unsafe"
+	"reflect"
+)
 
 // The TokenTypeT constants have been derived from the TOKEN_TYPE enum definition.
 type TokenTypeT uint32

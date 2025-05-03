@@ -158,7 +158,7 @@ func main() {
 
 	// Simulate including additional flags file
 	additionalFlagsFile := filepath.Join(os.Getenv("CMAKE_CURRENT_BINARY_DIR"), os.Getenv("CMAKE_FILES_DIRECTORY"), "wdkflags.h")
-	if err := os.WriteFile(additionalFlagsFile, []byte("#pragma runtime_checks(\"suc\", off)"), 0644); err != nil {
+	if err := os.WriteFile(additionalFlagsFile, []byte("#pragma runtime_checks(\"suc\", off)"), 0o644); err != nil {
 		fmt.Println(err)
 		return
 	}

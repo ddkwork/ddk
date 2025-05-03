@@ -2,13 +2,14 @@ package manpiecework
 
 import (
 	"fmt"
+	"iter"
+	"strconv"
+	"time"
+
 	"gioui.org/layout"
 	"gioui.org/widget"
 	"github.com/ddkwork/golibrary/mylog"
 	"github.com/ddkwork/ux"
-	"iter"
-	"strconv"
-	"time"
 )
 
 func New() ux.Widget {
@@ -23,7 +24,6 @@ func New() ux.Widget {
 						return true
 					},
 					Do: func() {
-
 					},
 					AppendDivider: false,
 					Clickable:     widget.Clickable{},
@@ -129,11 +129,11 @@ func New() ux.Widget {
 				case "日期":
 					return timeFmt
 				case "总件数":
-					return strconv.Itoa(NumberOfCompleteVehiclesSum) //todo Red
+					return strconv.Itoa(NumberOfCompleteVehiclesSum) // todo Red
 				case "泡沫箱":
-					return strconv.Itoa(FoamBoxSum) //todo Pink
+					return strconv.Itoa(FoamBoxSum) // todo Pink
 				case "胶框":
-					return strconv.Itoa(PlasticFrameSum) //todo Green
+					return strconv.Itoa(PlasticFrameSum) // todo Green
 				case "1标":
 					return strconv.Itoa(Mark1)
 				case "2<UNK>":
@@ -179,21 +179,19 @@ func New() ux.Widget {
 		},
 		UnmarshalRowCells: func(n *ux.Node[ManPieceworkEditData], rows []ux.CellData) {
 			n.Data = ux.UnmarshalRow[ManPieceworkEditData](rows, func(key, value string) (field any) {
-				switch key { //todo
-				//case "Size":
+				switch key { // todo
+				// case "Size":
 				//	return int64(datasize.Parse(value))
-				//case "ModTime":
+				// case "ModTime":
 				//	return mylog.Check2(time.Parse(time.RFC3339, value))
 				default:
-					return nil //todo change reflect.Zero(field.Type()) != "" and panic it
+					return nil // todo change reflect.Zero(field.Type()) != "" and panic it
 				}
 			})
 		},
 		RowSelectedCallback: func() {
-
 		},
 		RowDoubleClickCallback: func() {
-
 		},
 		SetRootRowsCallBack: func() {
 			all := ux.NewContainerNode("2022-02-05", ManPieceworkEditData{
@@ -1252,14 +1250,13 @@ func New() ux.Widget {
 			}
 			info := fmt.Sprintf("\t休息天数：%d\t总车数：%d\t总天数：%d", 休息天数, 总车数, 总天数)
 			println(info)
-
 		},
 		JsonName:   "Piecework tomato loading",
 		IsDocument: false,
 	}
 	return t
 
-	//ux.RunTest("计件表", t)
+	// ux.RunTest("计件表", t)
 
 }
 

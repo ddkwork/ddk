@@ -1,14 +1,15 @@
 package explorer
 
 import (
-	"gioui.org/layout"
-	"github.com/ddkwork/golibrary/stream"
-	"github.com/ddkwork/golibrary/stream/datasize"
-	"github.com/ddkwork/ux"
 	"iter"
 	"os"
 	"path/filepath"
 	"time"
+
+	"gioui.org/layout"
+	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/stream/datasize"
+	"github.com/ddkwork/ux"
 
 	"github.com/ddkwork/golibrary/mylog"
 )
@@ -18,7 +19,6 @@ func New() ux.Widget {
 	t.TableContext = ux.TableContext[DirTree]{
 		CustomContextMenuItems: func(gtx layout.Context, n *ux.Node[DirTree]) iter.Seq[ux.ContextMenuItem] {
 			return func(yield func(ux.ContextMenuItem) bool) {
-
 			}
 		},
 		MarshalRowCells: func(n *ux.Node[DirTree]) (cells []ux.CellData) {
@@ -55,10 +55,8 @@ func New() ux.Widget {
 			})
 		},
 		RowSelectedCallback: func() {
-
 		},
 		RowDoubleClickCallback: func() {
-
 		},
 		SetRootRowsCallBack: func() {
 			Walk(".", t.Root)

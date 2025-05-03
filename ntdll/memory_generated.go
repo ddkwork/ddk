@@ -3,8 +3,10 @@
 
 package ntdll
 
-import "unsafe"
-import "reflect"
+import (
+	"unsafe"
+	"reflect"
+)
 
 // The MemoryInformationClass constants have been derived from the MEMORY_INFORMATION_CLASS enum definition.
 type MemoryInformationClass uint32

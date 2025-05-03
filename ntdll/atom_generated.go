@@ -3,8 +3,10 @@
 
 package ntdll
 
-import "unsafe"
-import "reflect"
+import (
+	"unsafe"
+	"reflect"
+)
 
 // The AtomInformationClass constants have been derived from the ATOM_INFORMATION_CLASS enum definition.
 type AtomInformationClass uint32

@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-//使用携程
+// 使用携程
 // BenchmarkName-8   	  308677	      3719 ns/op
 // BenchmarkName-8   	  281802	      3749 ns/op
 // BenchmarkName-8   	  269437	      3809 ns/op

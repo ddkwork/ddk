@@ -4,7 +4,6 @@ import (
 	"cmp"
 	"encoding/hex"
 	"fmt"
-
 	"slices"
 	"strings"
 

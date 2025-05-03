@@ -1,11 +1,12 @@
 package BuyTomatoes
 
 import (
+	"iter"
+	"time"
+
 	"gioui.org/layout"
 	"github.com/ddkwork/golibrary/stream"
 	"github.com/ddkwork/ux"
-	"iter"
-	"time"
 )
 
 func New() ux.Widget {
@@ -13,7 +14,6 @@ func New() ux.Widget {
 	t.TableContext = ux.TableContext[BuyTomato]{
 		CustomContextMenuItems: func(gtx layout.Context, n *ux.Node[BuyTomato]) iter.Seq[ux.ContextMenuItem] {
 			return func(yield func(ux.ContextMenuItem) bool) {
-
 			}
 		},
 		MarshalRowCells: func(n *ux.Node[BuyTomato]) (cells []ux.CellData) {
@@ -70,7 +70,7 @@ func New() ux.Widget {
 				switch key {
 				case "Date":
 					return timeData
-				//case "ModTime":
+				// case "ModTime":
 				//	return stream.FormatTime(n.Data.ModTime)
 				default:
 					return ""
@@ -80,9 +80,9 @@ func New() ux.Widget {
 		UnmarshalRowCells: func(n *ux.Node[BuyTomato], rows []ux.CellData) {
 			n.Data = ux.UnmarshalRow[BuyTomato](rows, func(key, value string) (field any) {
 				switch key {
-				//case "Size":
+				// case "Size":
 				//	return int64(datasize.Parse(value))
-				//case "ModTime":
+				// case "ModTime":
 				//	return mylog.Check2(time.Parse(time.RFC3339, value))
 				default:
 					return nil
@@ -90,10 +90,8 @@ func New() ux.Widget {
 			})
 		},
 		RowSelectedCallback: func() {
-
 		},
 		RowDoubleClickCallback: func() {
-
 		},
 		SetRootRowsCallBack: func() {
 			tomatoes := make([]*ux.Node[BuyTomato], 0)
@@ -169,5 +167,5 @@ func New() ux.Widget {
 		IsDocument: false,
 	}
 	return t
-	//ux.RunTest("BuyTomato", t)
+	// ux.RunTest("BuyTomato", t)
 }

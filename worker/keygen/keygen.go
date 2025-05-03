@@ -13,7 +13,7 @@ type Object struct {
 }
 
 func New() ux.Widget {
-	//keygen.Api()//todo
+	// keygen.Api()//todo
 
 	data := Object{
 		MachineID: "1111-2222-3333-4444",
@@ -24,12 +24,12 @@ func New() ux.Widget {
 	}
 
 	form := ux.NewStructView("edit node meta data", data, func(key string, field any) (value string) {
-		return "" //todo test custom format field
+		return "" // todo test custom format field
 	},
 	)
 	form.SetOnApply(func() {
 		form.Data = ux.UnmarshalRow[Object](form.Rows, func(key, value string) (field any) {
-			return nil //todo test custom format field
+			return nil // todo test custom format field
 		})
 	})
 

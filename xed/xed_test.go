@@ -1,8 +1,9 @@
 package xed_test
 
 import (
-	"github.com/ddkwork/ddk/xed"
 	"testing"
+
+	"github.com/ddkwork/ddk/xed"
 )
 
 func TestDecode32(t *testing.T) {

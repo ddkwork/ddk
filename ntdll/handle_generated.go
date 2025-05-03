@@ -3,9 +3,7 @@
 
 package ntdll
 
-var (
-	procNtClose = modntdll.NewProc("NtClose")
-)
+var procNtClose = modntdll.NewProc("NtClose")
 
 func NtClose(
 	Handle Handle,
