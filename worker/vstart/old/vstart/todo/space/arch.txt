@@ -1,0 +1,166 @@
+win7 
+http://download.jieiis.com/iso/windows/
+wget http://download.jieiis.com/iso/windows/cn_windows_7_ultimate_with_sp1_x64_dvd_u_677408.iso
+
+ 
+sudo pacman -S flutter 
+https://github.com/StarCrossPortal/ghidracraft
+
+
+go clean -modcache 
+go install github.com/go-delve/delve/cmd/dlv@latest
+go install -tags=nucular_gio github.com/aarzilli/gdlv@latest
+gdlv debug
+
+
+go install golang.org/dl/go1.19beta1@latest
+
+git clone https://github.com/micheam/go-astviewer
+
+
+jb key 需要 sudo
+
+sudo rm /usr/share/licenses/goland/LICENSE.txt 
+sudo rm /usr/share/pixmaps/goland.svg
+ 
+sudo pacman -R $(pacman -Qdtq)
+sudo pacman -Scc
+journalctl --disk-usage
+sudo journalctl --vacuum-size=50M
+sudo rm /var/lib/systemd/coredump
+ 
+sudo thunar
+
+sudo pacman -S mitmproxy
+sudo pacman -R mitmproxy
+mitmdump --mode socks5
+--mode transparent
+
+openssl x509 -in ~/.mitmproxy/mitmproxy-ca.pem -inform PEM -out ca.crt
+sudo trust anchor ca.crt
+sudo update-ca-trust
+
+windows，系统信任后，浏览器不信任，需要设置到浏览器信任列表
+certutil -addstore root mitmproxy-ca-cert.cer
+df -h
+
+tar -zcvf space.tar.gz space
+tar -zxvf space.tar.gz
+
+pip install cmake-converter
+cmake-converter -s <path/to/file.sln>
+cmake-converter -s /workspaces/space/clone/HyperDbgDev/hyperdbg/hyperdbg.sln
+
+go install  github.com/gotranspile/cxgo/cmd/cxgo@latest
+cxgo file 1.c
+cxgo
+
+wine
+/etc/pacman.conf
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+sudo pacman -Sy
+yay -S bottles
+
+git clone --recursive  https://github.com/x64dbg/x64dbg.git
+git clone --recursive git://source.winehq.org/git/wine.git
+git clone --recursive https://github.com/reactos/reactos.git
+git clone --recursive https://github.com/nedpals/intellij-vlang.git
+
+
+
+sudo rm -rf /var/cache/pacman/pkg/* \
+    /tmp/* \
+    2>/dev/null
+
+
+
+curl -fsS https://dlang.org/install.sh | bash -s dmd
+sudo pacman -S dlang
+
+git clone https://github.com/buggins/dlangide.git
+cd dlangide
+dub run
+
+git clone --recursive https://github.com/buggins/dlangui.git
+cd dlangui/examples/example1
+dub run --build=release
+
+git clone --recursive  https://github.com/vlang/ui.git
+
+
+sudo pacman -S xarchiver
+
+端口占用
+netstat -nap | grep 9080
+kill 9588
+
+git lfs install
+git lfs clone --recursive https://github.com/jpap/go-zydis
+tar -I pzstd -cvf go-zydis.tar.zst go-zydis
+
+tar -I pzstd -cvf HyperDbgDev.tar.zst HyperDbgDev
+tar -I pzstd -cvf v.tar.zst v
+tar cvfa HyperDbgDev.tar.zst HyperDbgDev
+
+git clone --recursive -b dev https://github.com/HyperDbg/HyperDbg HyperDbgDev
+git clone --recursive https://github.com/ddkwork/gui.git
+
+
+go install github.com/lqqyt2423/go-mitmproxy/cmd/go-mitmproxy@latest
+go-mitmproxy
+
+tigervnc
+
+bash -c "$(curl -fsSL https://gitee.com/mo2/linux/raw/2/2)"
+
+
+    git clone https://github.com/goreleaser/goreleaser
+    cd goreleaser
+	go install ./...
+	goreleaser --version
+
+	goreleaser init
+	goreleaser --snapshot --skip-publish --rm-dist
+
+
+
+
+git config --global http.proxy http://127.0.0.1:9080
+git config --global https.proxy http://127.0.0.1:9080
+git config --list
+
+yay -S mitmproxy
+mitmproxy -m socks5 -p 9080
+
+git config --global http.https://github.com.proxy http://127.0.0.1:9080
+git config --global https.https://github.com.proxy http://127.0.0.1:9080
+
+git config --global -l
+
+openssl x509 -in ~/.mitmproxy/mitmproxy-ca.pem -inform PEM -out ca.crt
+git config --global http.sslCAInfo "C:\Users\Admin\Desktop\.mitmproxy\mitmproxy-ca-cert.pem"
+
+ssh-keygen -t ed25519 -C 2762713521@qq.com
+git config --global 2762713521@qq.com
+ssh -T git@github.com
+
+
+
+
+
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+git config --global http.sslCAInfo "/home/ddk/桌面/mitmproxy/mitmproxy-ca-cert.pem"
+git config --global http.https://github.com.proxy http://127.0.0.1:9080
+git config --global https.https://github.com.proxy http://127.0.0.1:9080
+
+sudo pacman -S bazel llvm
+git clone https://github.com/carbon-language/carbon-lang
+cd carbon-lang
+bazel run explorer
+
+
+git clone https://github.com/lapce/lapce
+go build -ldflags -H=windowsgui

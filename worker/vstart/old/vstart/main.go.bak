@@ -1,0 +1,338 @@
+package main
+
+import (
+	_ "embed"
+	"io/fs"
+	"path/filepath"
+	"strings"
+
+	"github.com/ddkwork/app"
+	"github.com/ddkwork/app/widget"
+	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/stream/desktop"
+	"github.com/ddkwork/unison"
+	"github.com/ddkwork/unison/enums/align"
+	"github.com/ddkwork/unison/enums/side"
+)
+
+//go:embed VStart.png
+var VStartPng []byte
+
+func main() {
+	app.RunWithIco("vstart", VStartPng, func(w *unison.Window) {
+		w.Content().AddChild(Layout())
+	})
+}
+
+func Layout() unison.Paneler {
+	dock := unison.NewDock()
+
+	AppTab := widget.NewTab(AppType.String(), "", layout(AppType))
+	GitTab := widget.NewTab(GitType.String(), "", layout(GitType))
+	EnvTab := widget.NewTab(EnvType.String(), "", layout(EnvType))
+	AiTab := widget.NewTab(AiType.String(), "", layout(AiType))
+	NotesTab := widget.NewTab(NotesType.String(), "", layout(NotesType))
+	Json2goTab := widget.NewTab(Json2goType.String(), "", layout(Json2goType))
+	TranslateTab := widget.NewTab(TranslateType.String(), "", layout(TranslateType))
+	WebBookMarkTab := widget.NewTab(WebBookMarkType.String(), "", layout(WebBookMarkType))
+	GolangTab := widget.NewTab(GolangType.String(), "", layout(GolangType))
+
+	dock.DockTo(AppTab, nil, side.Left)
+
+	dockContainer := widget.NewDockContainer(AppTab)
+
+	// dockContainer.Stack(AppTab, -1)
+	dockContainer.Stack(GitTab, -1)
+	dockContainer.Stack(EnvTab, -1)
+	dockContainer.Stack(AiTab, -1)
+	dockContainer.Stack(NotesTab, -1)
+	dockContainer.Stack(Json2goTab, -1)
+	dockContainer.Stack(TranslateTab, -1)
+	dockContainer.Stack(WebBookMarkTab, -1)
+	dockContainer.Stack(GolangTab, -1)
+
+	dockContainer.SetCurrentDockable(AppTab)
+	return dock
+}
+
+func layout(kind ToolboxType) unison.Paneler {
+	switch kind {
+	case AppType: // todo set AppData
+		panel := unison.NewPanel()
+		panel.SetLayout(&unison.FlexLayout{
+			Columns:      11,
+			HSpacing:     0,
+			VSpacing:     6,
+			HAlign:       0,
+			VAlign:       0,
+			EqualColumns: false,
+		})
+		scrollPanelFill := widget.NewScrollPanelFill(panel)
+		filepath.WalkDir("d:\\app", func(path string, info fs.DirEntry, err error) error {
+			switch {
+			case strings.Contains(path, "RECYCLE.BIN"):
+				return err
+			case info.IsDir():
+				return err
+			}
+			ext := filepath.Ext(path)
+			switch ext {
+			case ".exe":
+				if stream.IsWindows() {
+					path = filepath.ToSlash(path)
+					button := widget.NewButton(stream.AlignString(stream.BaseName(path), 5), func() {
+						mylog.Info("click", path)
+					})
+					b := app.ExtractIcon2Png(path)
+					if b == nil {
+						b = VStartPng
+					}
+					button.Drawable = &unison.SizedDrawable{
+						Drawable: mylog.Check2(unison.NewImageFromBytes(stream.NewBuffer(b).Bytes(), 0.5)),
+						Size:     unison.NewSize(24, 24),
+					}
+					button.Tooltip = unison.NewTooltipWithText(path)
+					panel.AddChild(button)
+
+					widget.NewContextMenuItems(button, button.MouseDownCallback,
+						widget.ContextMenuItem{
+							Title: "open dir",
+							Can:   func(_ any) bool { return true },
+							Do: func(a any) {
+								go desktop.Open(filepath.Dir(button.Tooltip.String()))
+								// go stream.RunCommandArgs("cd ", filepath.Dir(button.Tooltip.String()), "start", button.Tooltip.String())
+							},
+						},
+					).Install()
+				}
+
+				// RunCount := 0
+
+				// appInfo, b := o.appMap.GetMust(uxHelper.GetExeName(path))
+				// if b {
+				//	RunCount = appInfo.RunCount //获取历史运行次数
+				//	//新增的软件不会存在，忽略
+				// }
+				// o.appMap.Set(uxHelper.GetExeName(path), AppData{
+				//	RunCount: RunCount,
+				//	Path:     path,
+				//	PngPath:  uxHelper.GetExePngPath(path),
+				// })
+			}
+			return err
+		})
+
+		// for i := range 500 {
+		//	panel.AddChild(widget.NewButton(fmt.Sprint(i), func() {
+		//		mylog.Info("click", fmt.Sprint(i))
+		//	}))
+		// }
+		return scrollPanelFill
+	case GitType:
+		// https://github.com/go-git/go-git
+		type Git struct {
+			Chmod  string
+			Branch string
+			Url    string
+		}
+
+		panel := widget.NewPanel()
+		widget.SetScrollLayout(panel, 2)
+		// chmodTextField := createTextField("目录", "D:\\clone", panel)
+		// branchTextField := createTextField("分支", "", panel)
+		// urlTextField := createTextField("仓库地址", "https://github.com/HyperDbg/HyperDbg.git", panel)
+
+		fnCleanFast := func() {
+			// text := urlTextField.Value()
+			// if strings.ContainsAny(text, "githubfast.com") {
+			//	all := strings.ReplaceAll(text, "githubfast.com", "github.com")
+			//	urlTextField.SetText(all)
+			// }
+		}
+
+		chmodButton := unison.NewButton()
+		chmodButton.Text = "更改目录"
+		chmodButton.ClickCallback = func() {
+			// c := "cd " + chmodTextField.Value()
+			// go stream.RunCommand(c)
+			// stream.RunCommand("cd")
+		}
+
+		cloneButton := unison.NewButton()
+		cloneButton.Text = "克隆"
+		cloneButton.ClickCallback = func() {
+			fnCleanFast()
+			// c := "cd " + chmodTextField.Value()
+			// c += " "
+			// c += "&& "
+			// git cloneButton --recursive -b dev https://ghproxy.com/https://github.com/HyperDbg/HyperDbg.git
+			s := "git clone --recursive "
+			// if branchTextField.Value() != "" {
+			//	s += "-b " + branchTextField.Value()
+			//	s += " "
+			// }
+			// https://github.moeyy.xyz/
+			s += xyz
+			// s += urlTextField.Value()
+			// c += s
+			// c += " --progress"
+			// go stream.RunCommand(c)
+		}
+
+		fnGetRepDir := func() string {
+			return ""
+			// base := filepath.Base(urlTextField.Value())
+			// before, found := strings.CutSuffix(base, ".git")
+			// if found {
+			//	base = before
+			// }
+			// join := filepath.Join(chmodTextField.Value(), base)
+			// return join
+		}
+
+		fixSubmoduleButton := unison.NewButton()
+		fixSubmoduleButton.Text = "修复子模块"
+		fixSubmoduleButton.ClickCallback = func() {
+			fnCleanFast()
+			path := filepath.Join(fnGetRepDir(), ".gitmodules")
+			mylog.Warning("gitmodules path", path)
+
+			s := stream.NewBuffer(path)
+			mylog.Warning("gitmodules", s)
+			all := strings.ReplaceAll(s.String(), "url = ", "url = "+xyz)
+			if s.Contains(xyz) {
+				all = s.String()
+			}
+			mylog.Warning("gitmodules updated", all)
+			stream.WriteTruncate(path, all)
+		}
+
+		updateSubmoduleButton := unison.NewButton()
+		updateSubmoduleButton.Text = "更新子模块"
+		updateSubmoduleButton.ClickCallback = func() {
+			c := "cd " + fnGetRepDir() + " && "
+			go stream.RunCommand(c + "git submodule --init --update")
+		}
+		// applyPanel := flexPanel(4).AsPanel()
+		// applyPanel.SetContent(chmodButton)
+		// applyPanel.SetContent(cloneButton)
+		// applyPanel.SetContent(fixSubmoduleButton)
+		// applyPanel.SetContent(updateSubmoduleButton)
+		return panel
+	case EnvType:
+		return widget.NewPanel()
+	case AiType:
+		// https://bing.vcanbb.top/web
+		// https://github.com/akl7777777/free-chatgpt-client-pub/releases/tag/v3.5.4
+		// https://bbs.kanxue.com/thread-277601.htm
+		// bito
+		// monica
+		// sider
+		// todo add link frome gcs
+		return widget.NewPanel()
+	case NotesType:
+		// interface
+		// git proxy
+		// goproxy
+		//
+		//	field := gi.NewTextField(nil)
+		//	field.SetText(`
+		// type (
+		//	Interface interface {
+		//	}
+		//	object struct {
+		//	}
+		// )
+		//
+		// func newObject() Interface { return &object{} }
+		//
+		// //go env -w GOPROXY=https://goproxy.cn
+		//
+		// /*
+		// git config --global http.proxy http://127.0.0.1:8888
+		// git config --global https.proxy http://127.0.0.1:8888
+		// git config --global user.email "2762713521@qq.com"
+		// git config --global user.name "ddkwork"
+		// */
+		// `)
+		return widget.NewPanel()
+	case Json2goType:
+		return widget.NewPanel()
+	case TranslateType:
+		TranslateRadioButton := unison.NewRadioButton()
+		GolangCommentRadioButton := unison.NewRadioButton()
+		RemoveCommentAndSpaceRadioButton := unison.NewRadioButton()
+		TranslateRadioButton.Text = "Translate"
+		GolangCommentRadioButton.Text = "GolangComment"
+		RemoveCommentAndSpaceRadioButton.Text = "RemoveCommentAndSpace"
+		// ux.NewRadioButtonGroup( //?
+		//	TranslateRadioButton,
+		//	GolangCommentRadioButton,
+		//	RemoveCommentAndSpaceRadioButton,
+		// )
+		// TranslateRadioButton.SetSelected(true)//? todo
+		modelsPath := unison.NewMultiLineField()
+		modelsPath.SetText(translate.DefaultModelsPath)
+		modelsPath.SetMinimumTextWidthUsing(strings.Repeat(" ", 200))
+		input := unison.NewMultiLineField()
+		t := translate.New()
+
+		TranslateRadioButton.ClickCallback = func() {
+			unison.InvokeTask(func() {
+				all := strings.ReplaceAll(input.Text(), "\n", "")
+				if TranslateRadioButton.Pressed {
+					input.SetText(t.Translate(all))
+				}
+			})
+		}
+		input.ModifiedCallback = func(before, after *unison.FieldState) {
+			unison.InvokeTask(func() {
+			})
+		}
+		input.FileDropCallback = func(files []string) {
+			unison.InvokeTask(func() {
+				t.SetModelsPath(modelsPath.Text())
+				switch {
+				case GolangCommentRadioButton.Pressed:
+					t.GolangComment(files[0])
+				case RemoveCommentAndSpaceRadioButton.Pressed:
+					t.RemoveCommentAndSpace(files[0])
+				}
+			})
+		}
+		// tabs := widget.NewAppTabs("translate", "", nil, nil)
+		// tabs.SetLayout(&unison.FlexLayout{
+		//	Columns:  1,
+		//	HSpacing: unison.StdHSpacing,
+		//	VSpacing: unison.StdVSpacing,
+		// })
+		// tabs.SetContent(TranslateRadioButton)
+		// tabs.SetContent(GolangCommentRadioButton)
+		// tabs.SetContent(RemoveCommentAndSpaceRadioButton)
+		// tabs.SetContent(modelsPath)
+		// tabs.SetContent(input)
+		return widget.NewPanel()
+	case WebBookMarkType:
+		return widget.NewPanel() // todo table
+	case GolangType:
+		goProxyButton := unison.NewButton()
+		goProxyButton.Text = "goProxy"
+		goProxyButton.ClickCallback = func() {
+			go stream.RunCommand("go env -w GOPROXY=https://goproxy.cn")
+		}
+		return goProxyButton
+	default:
+	}
+	panel := widget.NewPanel()
+	panel.SetLayout(&unison.FlexLayout{Columns: 2})
+	panel.SetLayoutData(&unison.FlexLayoutData{
+		HAlign: align.Fill,
+		VAlign: align.Fill,
+	})
+	return panel
+}
+
+const (
+	xyz = "https://github.moeyy.xyz/"
+)

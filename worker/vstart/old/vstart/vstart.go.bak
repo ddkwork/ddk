@@ -1,0 +1,42 @@
+			d := widget.NewButton(m).SetText("delete").SetIcon(icons.DeleteForever)
+			d.OnClick(func(e events.Event) {
+				w := gi.NewBody().AddTitle("warning").AddText("Remove file")
+				w.AddBottomBar(func(g gi.Widget) {
+					w.AddCancel(g)
+					w.AddOk(g).OnClick(func(e events.Event) {
+						go mylog.Check(os.Remove(button.Tooltip))
+					})
+				})
+				w.NewDialog(d).Run()
+			})
+
+			widget.NewButton(m).SetText("cut").SetIcon(icons.Cut)
+			widget.NewButton(m).SetText("copy").SetIcon(icons.Copy)
+			widget.NewButton(m).SetText("rename").SetIcon(icons.Autorenew)
+			widget.NewButton(m).SetText("prop").SetIcon(icons.Problem) // todo rename
+
+			widget.NewButton(m).SetText("new txt file").OnClick(func(e events.Event) {
+				os.Create("empty.txt") // todo 输入空就默认的文件名，输入了就改名
+			})
+			widget.NewButton(m).SetText("open cmd here").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("open powershell here").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("add to clean ext list").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("open Everything here").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("compare to tar.zst").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("unCompare from tar.zst").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("open folder as goland project").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("open with goland").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("open with clion").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("open with fleet").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("open with PyCharm").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("unlock file").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("copy path").OnClick(func(e events.Event) {}) // todo unc need
+			widget.NewButton(m).SetText("send to").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("open in new tab").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("pin to quic access ").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("xxx").OnClick(func(e events.Event) {})
+			widget.NewButton(m).SetText("xxx").OnClick(func(e events.Event) {})
+		})
+	}
+}
+
