@@ -13,6 +13,7 @@ import (
 )
 
 func TestRenameNtdll(t *testing.T) {
+	t.Skip("once only")
 	filepath.Walk("ntdll", func(path string, info fs.FileInfo, err error) error {
 		if filepath.Ext(path) == ".go" {
 			ok := path[:len(path)-len(filepath.Ext(path))] + "_windows.go"
