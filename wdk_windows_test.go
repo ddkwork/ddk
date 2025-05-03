@@ -1,6 +1,9 @@
 package ddk_test
 
 import (
+	"io/fs"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/ddkwork/ddk"
@@ -8,6 +11,17 @@ import (
 	"github.com/ddkwork/golibrary/mylog"
 	"github.com/saferwall/pe"
 )
+
+func TestRenameNtdll(t *testing.T) {
+	filepath.Walk("ntdll", func(path string, info fs.FileInfo, err error) error {
+		if filepath.Ext(path) == ".go" {
+			ok := path[:len(path)-len(filepath.Ext(path))] + "_windows.go"
+			println(ok)
+			mylog.Check(os.Rename(path, ok))
+		}
+		return err
+	})
+}
 
 func TestPdb(t *testing.T) {
 	t.Skip()
