@@ -1,5 +1,5 @@
-github.com/ddkwork/golibrary v0.0.0-20250503022829-ab9f0d645334 h1:qIkuIR1oHnhVTMVrHAoeMm1PtvyqTpUfr5ncuvV/FSo=
-github.com/ddkwork/golibrary v0.0.0-20250503022829-ab9f0d645334/go.mod h1:JkTN5ZkZYptsfII6orURXexoJILmpfgXPT9dEWEEQjQ=
+github.com/ddkwork/golibrary v0.0.0-20250503150424-581d702b3813 h1:6ZF6Sp/dzOi2cQoTurNnctgMg9NR2YjwEUTSqardw0E=
+github.com/ddkwork/golibrary v0.0.0-20250503150424-581d702b3813/go.mod h1:JkTN5ZkZYptsfII6orURXexoJILmpfgXPT9dEWEEQjQ=
 github.com/edsrzf/mmap-go v1.1.0 h1:6EUwBLQ/Mcr1EYLE4Tn1VdW1A4ckqCQWZBw8Hr0kjpQ=
 github.com/edsrzf/mmap-go v1.1.0/go.mod h1:19H/e8pUPLicwkyNgOykDXkJ9F0MHE+Z52B8EIth78Q=
 github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
