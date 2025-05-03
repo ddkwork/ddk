@@ -152,7 +152,7 @@ func PE(filename string) (pe *PEFile, err error) {
 			if binary.LittleEndian.Uint32(symbol.ShortName[:4]) == 0 {
 				n := binary.LittleEndian.Uint32(symbol.ShortName[4:])
 				longName := pe.StringTable[n:]
-				for i := 0; i < len(longName); i++ {
+				for i := range longName {
 					if longName[i] == 0 {
 						longName = longName[:i]
 						break
@@ -292,7 +292,7 @@ func OBJ(filename string) (pe *PEFile, err error) {
 			if binary.LittleEndian.Uint32(symbol.ShortName[:4]) == 0 {
 				n := binary.LittleEndian.Uint32(symbol.ShortName[4:])
 				longName := pe.StringTable[n:]
-				for i := 0; i < len(longName); i++ {
+				for i := range longName {
 					if longName[i] == 0 {
 						longName = longName[:i]
 						break

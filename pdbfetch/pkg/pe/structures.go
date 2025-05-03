@@ -1097,7 +1097,7 @@ func structString(fileOffset int, structName string, iface any) string {
 	sType := reflect.TypeOf(iface)
 	sValue := reflect.ValueOf(iface)
 	values := "[" + structName + "]\n"
-	for i := 0; i < sType.NumField(); i++ {
+	for i := range sType.NumField() {
 		sField := sType.Field(i)
 		vField := sValue.Field(i)
 		kind := vField.Kind()
@@ -1145,7 +1145,7 @@ func flagString(flagMap map[string]bool) string {
 
 func EmptyStruct(iface any) bool {
 	value := reflect.ValueOf(iface)
-	for i := 0; i < value.NumField(); i++ {
+	for i := range value.NumField() {
 		field := value.Field(i)
 		kind := field.Kind()
 		if kind == reflect.Uint8 && field.Interface().(uint8) != uint8(0) {
