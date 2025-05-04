@@ -5,8 +5,8 @@ go 1.24.1
 require (
 	gioui.org v0.8.1-0.20250424183133-e18db649912a
 	github.com/aquasecurity/table v1.10.0
-	github.com/ddkwork/golibrary v0.0.0-20250503150424-581d702b3813
-	github.com/ddkwork/ux v0.0.0-20250503141751-9e77bedad3e7
+	github.com/ddkwork/golibrary v0.0.0-20250504055225-c75618cc36e5
+	github.com/ddkwork/ux v0.0.0-20250504060654-533760114c50
 	github.com/go-enry/go-enry/v2 v2.9.2
 	github.com/gorpher/gowin32 v0.0.11
 	github.com/hashicorp/go-version v1.7.0
