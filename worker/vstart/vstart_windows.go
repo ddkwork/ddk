@@ -115,7 +115,6 @@ func New() ux.Widget {
 				AppendDivider: false,
 				Clickable:     widget.Clickable{},
 			})
-
 		})
 		elems.Set(key, value)
 	}
