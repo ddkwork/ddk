@@ -3,10 +3,10 @@ module github.com/ddkwork/ddk
 go 1.24.1
 
 require (
-	gioui.org v0.8.1-0.20250424183133-e18db649912a
+	gioui.org v0.8.1-0.20250505174639-f73287be870d
 	github.com/aquasecurity/table v1.10.0
-	github.com/ddkwork/golibrary v0.0.0-20250504055225-c75618cc36e5
-	github.com/ddkwork/ux v0.0.0-20250504104324-bfda9ba6df12
+	github.com/ddkwork/golibrary v0.1.2-0.20250505042507-fb65953b7361
+	github.com/ddkwork/ux v0.0.0-20250506013917-14700c8ac6d8
 	github.com/go-enry/go-enry/v2 v2.9.2
 	github.com/gorpher/gowin32 v0.0.11
 	github.com/hashicorp/go-version v1.7.0
@@ -15,8 +15,8 @@ require (
 	github.com/saferwall/pe v1.5.6
 	github.com/shirou/gopsutil/v3 v3.24.5
 	github.com/spyre-project/spyre v1.2.5
-	golang.org/x/arch v0.16.1-0.20250430154214-ca84b2ccdbe0
-	golang.org/x/sys v0.32.0
+	golang.org/x/arch v0.17.0
+	golang.org/x/sys v0.33.0
 )
 
 require (
@@ -32,10 +32,10 @@ require (
 	github.com/google/glazier v0.0.0-20211029225403-9f766cca891d // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
-	github.com/mattn/go-runewidth v0.0.13 // indirect
+	github.com/mattn/go-runewidth v0.0.16 // indirect
 	github.com/oligo/gvcode v0.2.1-0.20250424030509-8138ffc92f73 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
-	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/scjalliance/comshim v0.0.0-20190308082608-cf06d2532c4e // indirect
 	github.com/secDre4mer/pkcs7 v0.0.0-20240322103146-665324a4461d // indirect
 	github.com/shoenig/go-m1cpu v0.1.6 // indirect
@@ -44,13 +44,13 @@ require (
 	github.com/tklauser/go-sysconf v0.3.12 // indirect
 	github.com/tklauser/numcpus v0.6.1 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
-	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
+	golang.org/x/exp v0.0.0-20250408133849-7e4ce0ab07d0 // indirect
 	golang.org/x/exp/shiny v0.0.0-20250408133849-7e4ce0ab07d0 // indirect
-	golang.org/x/image v0.25.0 // indirect
+	golang.org/x/image v0.26.0 // indirect
 	golang.org/x/mod v0.24.0 // indirect
-	golang.org/x/net v0.39.0 // indirect
-	golang.org/x/sync v0.13.0 // indirect
-	golang.org/x/term v0.31.0 // indirect
-	golang.org/x/text v0.24.0 // indirect
+	golang.org/x/net v0.40.0 // indirect
+	golang.org/x/sync v0.14.0 // indirect
+	golang.org/x/term v0.32.0 // indirect
+	golang.org/x/text v0.25.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
