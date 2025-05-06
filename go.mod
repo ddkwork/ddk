@@ -6,7 +6,7 @@ require (
 	gioui.org v0.8.1-0.20250505174639-f73287be870d
 	github.com/aquasecurity/table v1.10.0
 	github.com/ddkwork/golibrary v0.1.2-0.20250505042507-fb65953b7361
-	github.com/ddkwork/ux v0.0.0-20250506013917-14700c8ac6d8
+	github.com/ddkwork/ux v0.0.0-20250506101838-502688e1a931
 	github.com/go-enry/go-enry/v2 v2.9.2
 	github.com/gorpher/gowin32 v0.0.11
 	github.com/hashicorp/go-version v1.7.0
