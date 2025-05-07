@@ -91,8 +91,8 @@ func New() ux.Widget {
 				}
 			}
 
-			//todo check it
-			//return []ux.CellData{
+			// todo check it
+			// return []ux.CellData{
 			//	{Text: timeFmt},
 			//	{Text: n.Data.Destination},
 			//	{Text: fmt.Sprint(NumberOfCompleteVehiclesSum), FgColor: unison.Red},
@@ -122,7 +122,7 @@ func New() ux.Widget {
 			//	{Text: fmt.Sprint(ElectronicCommerce), FgColor: unison.YellowGreen},
 			//	{Text: fmt.Sprint(Carpooling), FgColor: unison.Tomato},
 			//	{Text: n.Data.Note},
-			//}
+			// }
 
 			return ux.MarshalRow(n.Data, func(key string, field any) (value string) {
 				switch key {
@@ -1236,6 +1236,7 @@ func New() ux.Widget {
 			fnWageDay("2022-04-03", ManPieceworkEditData{}, ManPieceworkEditData{}, ManPieceworkEditData{})
 			fnWageDay("2022-04-04", ManPieceworkEditData{}, ManPieceworkEditData{}, ManPieceworkEditData{})
 			fnWageDay("2022-04-05", ManPieceworkEditData{}, ManPieceworkEditData{}, ManPieceworkEditData{})
+			t.SyncToModel()
 
 			休息天数 := 0
 			总车数 := 0
