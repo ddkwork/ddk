@@ -41,8 +41,8 @@ func New() ux.Widget {
 				}
 			})
 		},
-		UnmarshalRowCells: func(n *ux.Node[Task], rows []ux.CellData) {
-			n.Data = ux.UnmarshalRow[Task](rows, func(key, value string) (field any) {
+		UnmarshalRowCells: func(n *ux.Node[Task], rows []ux.CellData) Task {
+			return ux.UnmarshalRow[Task](rows, func(key, value string) (field any) {
 				switch key {
 				case "CPU":
 					return mylog.Check2(fmt.Sscanf(value, "%f%%"))
@@ -68,7 +68,6 @@ func New() ux.Widget {
 			// 	// m.Lock()
 			// 	// defer m.Unlock()
 			// 	t.Root.ResetChildren()
-			// 	// root.SyncToModel()
 			// 	getTasks(t.Root)
 			// 	t.SetRootRows(t.Root.Children)
 			// }

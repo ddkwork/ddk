@@ -42,8 +42,8 @@ func New() ux.Widget {
 				}
 			})
 		},
-		UnmarshalRowCells: func(n *ux.Node[DirTree], rows []ux.CellData) {
-			n.Data = ux.UnmarshalRow[DirTree](rows, func(key, value string) (field any) {
+		UnmarshalRowCells: func(n *ux.Node[DirTree], rows []ux.CellData) DirTree {
+			return ux.UnmarshalRow[DirTree](rows, func(key, value string) (field any) {
 				switch key {
 				case "Size":
 					return int64(datasize.Parse(value))

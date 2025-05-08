@@ -177,8 +177,8 @@ func New() ux.Widget {
 				}
 			})
 		},
-		UnmarshalRowCells: func(n *ux.Node[ManPieceworkEditData], rows []ux.CellData) {
-			n.Data = ux.UnmarshalRow[ManPieceworkEditData](rows, func(key, value string) (field any) {
+		UnmarshalRowCells: func(n *ux.Node[ManPieceworkEditData], rows []ux.CellData) ManPieceworkEditData {
+			return ux.UnmarshalRow[ManPieceworkEditData](rows, func(key, value string) (field any) {
 				switch key { // todo
 				// case "Size":
 				//	return int64(datasize.Parse(value))
@@ -1236,7 +1236,6 @@ func New() ux.Widget {
 			fnWageDay("2022-04-03", ManPieceworkEditData{}, ManPieceworkEditData{}, ManPieceworkEditData{})
 			fnWageDay("2022-04-04", ManPieceworkEditData{}, ManPieceworkEditData{}, ManPieceworkEditData{})
 			fnWageDay("2022-04-05", ManPieceworkEditData{}, ManPieceworkEditData{}, ManPieceworkEditData{})
-			t.SyncToModel()
 
 			休息天数 := 0
 			总车数 := 0

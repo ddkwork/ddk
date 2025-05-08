@@ -51,8 +51,8 @@ func Layout() ux.Widget {
 				return ""
 			})
 		},
-		UnmarshalRowCells: func(n *ux.Node[EnvironmentEditor], rows []ux.CellData) {
-			n.Data = ux.UnmarshalRow[EnvironmentEditor](rows, func(key, value string) (field any) {
+		UnmarshalRowCells: func(n *ux.Node[EnvironmentEditor], rows []ux.CellData) EnvironmentEditor {
+			return ux.UnmarshalRow[EnvironmentEditor](rows, func(key, value string) (field any) {
 				if key == "IsValid" {
 					if value == "✓" {
 						return true

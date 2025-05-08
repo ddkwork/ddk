@@ -48,7 +48,7 @@ func New() ux.Widget {
 				}
 				n.Data.Payment = sum2
 			}
-			//return []ux.CellData{
+			// return []ux.CellData{
 			//	{Text: timeData},
 			//	{Text: node.Data.Name},
 			//	{Text: strconv.FormatInt(node.Data.GrossWeight, 10)},
@@ -65,7 +65,7 @@ func New() ux.Widget {
 			//	{Text: fmt.Sprint(node.Data.Score)},
 			//	{Text: fmt.Sprint(node.Data.Enable)},
 			//	{Text: node.Data.Note},
-			//}
+			// }
 			return ux.MarshalRow(n.Data, func(key string, field any) (value string) {
 				switch key {
 				case "Date":
@@ -77,8 +77,8 @@ func New() ux.Widget {
 				}
 			})
 		},
-		UnmarshalRowCells: func(n *ux.Node[BuyTomato], rows []ux.CellData) {
-			n.Data = ux.UnmarshalRow[BuyTomato](rows, func(key, value string) (field any) {
+		UnmarshalRowCells: func(n *ux.Node[BuyTomato], rows []ux.CellData) BuyTomato {
+			return ux.UnmarshalRow[BuyTomato](rows, func(key, value string) (field any) {
 				switch key {
 				// case "Size":
 				//	return int64(datasize.Parse(value))

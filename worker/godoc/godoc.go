@@ -36,11 +36,11 @@ func Layout(libDir string) ux.Widget {
 				return ""
 			})
 		},
-		UnmarshalRowCells: func(n *ux.Node[Godoc], rows []ux.CellData) {
+		UnmarshalRowCells: func(n *ux.Node[Godoc], rows []ux.CellData) Godoc {
 			if n.Container() {
 				n.Data.Path = n.SumChildren()
 			}
-			n.Data = ux.UnmarshalRow[Godoc](rows, func(key, value string) (field any) {
+			return ux.UnmarshalRow[Godoc](rows, func(key, value string) (field any) {
 				return nil
 			})
 		},
@@ -126,7 +126,7 @@ func processFile(filePath string, parent *ux.Node[Godoc]) {
 				})
 			}
 		case *ast.GenDecl: // 处理结构体
-			//if x.Tok == token.TYPE {
+			// if x.Tok == token.TYPE {
 			//	for _, spec := range x.Specs {
 			//		ts, ok := spec.(*ast.TypeSpec)
 			//		if !ok {
@@ -139,7 +139,7 @@ func processFile(filePath string, parent *ux.Node[Godoc]) {
 			//			}
 			//		}
 			//	}
-			//}
+			// }
 		}
 		if x, ok := n.(*ast.FuncDecl); ok {
 			if x.Recv != nil {
