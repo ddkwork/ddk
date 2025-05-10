@@ -5,8 +5,8 @@ go 1.24.1
 require (
 	gioui.org v0.8.1-0.20250505174639-f73287be870d
 	github.com/aquasecurity/table v1.10.0
-	github.com/ddkwork/golibrary v0.1.2-0.20250505042507-fb65953b7361
-	github.com/ddkwork/ux v0.0.0-20250506101838-502688e1a931
+	github.com/ddkwork/golibrary v0.1.2-0.20250507062101-31099ee7792e
+	github.com/ddkwork/ux v0.0.0-20250510172657-35b446f4eede
 	github.com/go-enry/go-enry/v2 v2.9.2
 	github.com/gorpher/gowin32 v0.0.11
 	github.com/hashicorp/go-version v1.7.0
@@ -33,7 +33,7 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
 	github.com/mattn/go-runewidth v0.0.16 // indirect
-	github.com/oligo/gvcode v0.2.1-0.20250424030509-8138ffc92f73 // indirect
+	github.com/oligo/gvcode v0.2.2 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/scjalliance/comshim v0.0.0-20190308082608-cf06d2532c4e // indirect
