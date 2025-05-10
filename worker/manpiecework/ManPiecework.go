@@ -1255,8 +1255,6 @@ func New() ux.Widget {
 		IsDocument: false,
 	}
 	return t
-
-	// ux.RunTest("计件表", t)
 }
 
 type (

@@ -167,5 +167,4 @@ func New() ux.Widget {
 		IsDocument: false,
 	}
 	return t
-	// ux.RunTest("BuyTomato", t)
 }

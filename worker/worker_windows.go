@@ -4,6 +4,10 @@ import (
 	"gioui.org/app"
 	"gioui.org/layout"
 	"github.com/ddkwork/ddk/worker/BuyTomatoes"
+	"github.com/ddkwork/ddk/worker/DecodeRaw"
+	"github.com/ddkwork/ddk/worker/jsontree"
+	"github.com/ddkwork/ddk/worker/struct2table"
+
 	// "github.com/ddkwork/ddk/worker/DecodeRaw"
 	"github.com/ddkwork/ddk/worker/environment"
 	"github.com/ddkwork/ddk/worker/explorer"
@@ -24,8 +28,8 @@ func main() {
 		switch workType {
 		case BuyTomatoesType:
 			m.Set(workType, BuyTomatoes.New())
-		// case DecodeRawType:
-		// 	m.Set(workType, DecodeRaw.New())
+		case DecodeRawType:
+			m.Set(workType, DecodeRaw.New())
 		case ManPieceworkType:
 			m.Set(workType, manpiecework.New())
 		case EnvironmentType:
@@ -36,12 +40,12 @@ func main() {
 			m.Set(workType, explorer.New())
 		case GodocType:
 			m.Set(workType, godoc.New())
-		// case JsontreeType:
-		// 	m.Set(workType, jsontree.New())
+		case JsontreeType:
+			m.Set(workType, jsontree.New())
 		case KeygenType:
 			m.Set(workType, keygen.New())
-		// case Struct2tableType:
-		// 	m.Set(workType, struct2table.New())
+		case Struct2tableType:
+			m.Set(workType, struct2table.New())
 		case TaskmanagerType:
 			m.Set(workType, taskmanager.New())
 		case VstartType:
@@ -53,9 +57,7 @@ func main() {
 		tab := ux.NewTabItem(k.String(), v)
 		vtab.AddTab(tab)
 	}
-	w := new(app.Window)
-	w.Option(app.Title("worker"))
-	panel := ux.NewPanel(w)
+	panel := ux.NewPanel()
 	panel.AddChild(vtab)
-	ux.Run(panel)
+	ux.Run("Worker", panel)
 }
