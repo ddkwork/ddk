@@ -170,7 +170,7 @@ func downloadSymbolFile(filepath string, url string) error {
 
 	// Write the body to file
 	_ = mylog.Check2(io.Copy(out, reader))
-	return err
+	return nil
 }
 
 func help() {
