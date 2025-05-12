@@ -30,15 +30,14 @@ func (o *object[T]) MovEaxImm(instruction x86asm.Inst) (imm int64) {
 	if instruction.Op == x86asm.MOV {
 		for i, arg := range instruction.Args {
 			for reg := range Is[x86asm.Reg](arg) {
-				if reg != x86asm.EAX {
-					continue
+				if reg == x86asm.EAX {
+					for mem := range Is[x86asm.Imm](instruction.Args[i+1]) {
+						if mem > 10000 {
+							return
+						}
+						return int64(mem)
+					}
 				}
-			}
-			for mem := range Is[x86asm.Imm](instruction.Args[i+1]) {
-				if mem > 10000 {
-					return
-				}
-				return int64(mem)
 			}
 		}
 	}
