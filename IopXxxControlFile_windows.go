@@ -44,13 +44,11 @@ func IopXxxControlFile(info *xed.FilterInfo) {
 			nextInst.Op == x86asm.ADD &&
 			nextInst2.Op == x86asm.RET {
 			for _, arg := range instruction.Args {
-				imm, b2 := x.IsRel(arg)
-				if !b2 {
-					continue
+				for rel := range xed.Is[x86asm.Rel](arg) {
+					info.DstFunctionRVA = uint64(rel)
+					info.Ok = true
+					return
 				}
-				info.DstFunctionRVA = uint64(imm)
-				info.Ok = true
-				return
 			}
 		}
 	}

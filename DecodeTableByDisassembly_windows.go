@@ -71,20 +71,15 @@ func ZwDeviceIoControlFile(info *xed.FilterInfo) {
 		// e902840xed.OpcodeDataSize              jmp .+0x18402  KiServiceInternal
 		next := x.Instructions[i+1]
 		if instruction.Op == x86asm.MOV && next.Op == x86asm.JMP {
-			imm, o := x.MovEaxImm(instruction)
-			if !o {
-				continue
-			}
+			imm := x.MovEaxImm(instruction)
 			for _, arg := range next.Args {
-				rel, b2 := x.IsRel(arg)
-				if !b2 {
-					continue
+				for rel := range xed.Is[x86asm.Rel](arg) {
+					info.InstructionsLen += next.Len
+					info.DstFunctionRVA = uint64(rel)
+					info.SysCallNumber = uint32(imm)
+					info.Ok = true
+					return
 				}
-				info.InstructionsLen += next.Len
-				info.DstFunctionRVA = uint64(rel)
-				info.SysCallNumber = uint32(imm)
-				info.Ok = true
-				return
 			}
 		}
 	}
@@ -104,18 +99,16 @@ func KiServiceInternal(info *xed.FilterInfo) {
 			for i, arg := range instruction.Args {
 				// lea r11, ptr [rip+0x367]  KiSystemServiceStart
 				//  jmp r11
-				_, b2 := x.IsReg(arg, x86asm.R11)
-				if !b2 {
-					continue
+				for reg := range xed.Is[x86asm.Reg](arg) {
+					if reg == x86asm.R11 {
+						a := instruction.Args[i+1]
+						for mem := range xed.Is[x86asm.Mem](a) {
+							info.DstFunctionRVA = uint64(mem.Disp)
+							info.Ok = true
+							return
+						}
+					}
 				}
-				a := instruction.Args[i+1]
-				mem, b := x.IsMem(a)
-				if !b {
-					continue
-				}
-				info.DstFunctionRVA = uint64(mem.Disp)
-				info.Ok = true
-				return
 			}
 		}
 	}
@@ -204,45 +197,39 @@ func KiSystemServiceStart(info *xed.FilterInfo) (syscall *SysCall, ok bool) {
 			next4.Op == x86asm.JE &&
 			next5.Op == x86asm.LEA {
 			for i2, arg := range instruction.Args {
-				_, b := x.IsReg(arg, x86asm.R10)
-				if !b {
-					continue
+				for reg := range xed.Is[x86asm.Reg](arg) {
+					if reg == x86asm.R10 {
+						for mem := range xed.Is[x86asm.Mem](instruction.Args[i2+1]) {
+							syscall.offsetKeServiceDescriptorTable = info.BaseFunctionRVA + uint32(mem.Disp) + uint32(size)
+						}
+					}
 				}
-				imm, b2 := x.IsMem(instruction.Args[i2+1])
-				if !b2 {
-					continue
-				}
-				syscall.offsetKeServiceDescriptorTable = info.BaseFunctionRVA + uint32(imm.Disp) + uint32(size)
 			}
 			for i2, arg := range next.Args {
-				_, b := x.IsReg(arg, x86asm.R11)
-				if !b {
-					continue
+				for reg := range xed.Is[x86asm.Reg](arg) {
+					if reg == x86asm.R11 {
+						for mem := range xed.Is[x86asm.Mem](instruction.Args[i2+1]) {
+							size += next.Len
+							syscall.offsetKeServiceDescriptorTableShadow = info.BaseFunctionRVA + uint32(mem.Disp) + uint32(size)
+						}
+					}
 				}
-				imm, b2 := x.IsMem(instruction.Args[i2+1])
-				if !b2 {
-					continue
-				}
-				size += next.Len
-				syscall.offsetKeServiceDescriptorTableShadow = info.BaseFunctionRVA + uint32(imm.Disp) + uint32(size)
 			}
 
 			for i2, arg := range next5.Args {
-				_, b := x.IsReg(arg, x86asm.R11)
-				if !b {
-					continue
+				for reg := range xed.Is[x86asm.Reg](arg) {
+					if reg == x86asm.R11 {
+						for mem := range xed.Is[x86asm.Mem](instruction.Args[i2+1]) {
+							size += next1.Len
+							size += next2.Len
+							size += next3.Len
+							size += next4.Len
+							size += next5.Len
+							syscall.offsetKeServiceDescriptorTableFilter = info.BaseFunctionRVA + uint32(mem.Disp) + uint32(size)
+							return syscall, true
+						}
+					}
 				}
-				imm, b2 := x.IsMem(instruction.Args[i2+1])
-				if !b2 {
-					continue
-				}
-				size += next1.Len
-				size += next2.Len
-				size += next3.Len
-				size += next4.Len
-				size += next5.Len
-				syscall.offsetKeServiceDescriptorTableFilter = info.BaseFunctionRVA + uint32(imm.Disp) + uint32(size)
-				return syscall, true
 			}
 		}
 	}

@@ -2,36 +2,22 @@ package xed
 
 import (
 	"fmt"
+	"iter"
 
 	"github.com/ddkwork/golibrary/mylog"
 	"github.com/ddkwork/golibrary/stream"
 	"golang.org/x/arch/x86/x86asm"
 )
 
-func (o *object[T]) IsImm(a x86asm.Arg) (x86asm.Imm, bool) {
-	imm, ok := a.(x86asm.Imm)
-	return imm, ok
-}
-
-func (o *object[T]) IsRel(a x86asm.Arg) (x86asm.Rel, bool) {
-	rel, ok := a.(x86asm.Rel)
-	return rel, ok
-}
-
-func (o *object[T]) IsMem(a x86asm.Arg) (x86asm.Mem, bool) {
-	mem, ok := a.(x86asm.Mem)
-	return mem, ok
-}
-
-func (o *object[T]) IsReg(a x86asm.Arg, reg x86asm.Reg) (Reg x86asm.Reg, ok bool) {
-	r, ok := a.(x86asm.Reg)
-	if !ok {
-		return
+func Is[T any](v any) iter.Seq[T] {
+	return func(yield func(T) bool) {
+		value, ok := v.(T)
+		if ok {
+			if !yield(value) {
+				return
+			}
+		}
 	}
-	if r == reg {
-		return reg, ok
-	}
-	return
 }
 
 // MovEaxImm  MOV  EAX,0x7   用于ntdll ntosker获取nt api编号，
@@ -40,21 +26,20 @@ func (o *object[T]) IsReg(a x86asm.Arg, reg x86asm.Reg) (Reg x86asm.Reg, ok bool
 // KeServiceDescriptorTable
 // KeServiceDescriptorTableShadow
 // KeServiceDescriptorTableFilter
-func (o *object[T]) MovEaxImm(instruction x86asm.Inst) (imm int64, ok bool) {
+func (o *object[T]) MovEaxImm(instruction x86asm.Inst) (imm int64) {
 	if instruction.Op == x86asm.MOV {
 		for i, arg := range instruction.Args {
-			_, b := o.IsReg(arg, x86asm.EAX)
-			if !b {
-				continue
+			for reg := range Is[x86asm.Reg](arg) {
+				if reg != x86asm.EAX {
+					continue
+				}
 			}
-			mem, b2 := o.IsImm(instruction.Args[i+1])
-			if !b2 {
-				continue
+			for mem := range Is[x86asm.Imm](instruction.Args[i+1]) {
+				if mem > 10000 {
+					return
+				}
+				return int64(mem)
 			}
-			if mem > 10000 {
-				return
-			}
-			return int64(mem), true
 		}
 	}
 	return

@@ -71,15 +71,13 @@ func MmFreeNonCachedMemory(info *xed.FilterInfo) {
 			nextInst.Op == x86asm.MOV &&
 			nextInst2.Op == x86asm.CALL {
 			for _, arg := range nextInst2.Args {
-				imm, b2 := x.IsRel(arg)
-				if !b2 {
-					continue
+				for rel := range xed.Is[x86asm.Rel](arg) {
+					info.InstructionsLen += nextInst.Len
+					info.InstructionsLen += nextInst2.Len
+					info.DstFunctionRVA = uint64(rel)
+					info.Ok = true
+					return
 				}
-				info.InstructionsLen += nextInst.Len
-				info.InstructionsLen += nextInst2.Len
-				info.DstFunctionRVA = uint64(imm)
-				info.Ok = true
-				return
 			}
 		}
 	}

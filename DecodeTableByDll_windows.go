@@ -39,10 +39,7 @@ func DecodeNtApi(filename string) (ntApis []NtApi) {
 			x := xed.New(data).Decode64()
 			index := uint32(0)
 			for _, instruction := range x.Instructions {
-				imm, o := x.MovEaxImm(instruction)
-				if !o {
-					continue
-				}
+				imm := x.MovEaxImm(instruction)
 				index = uint32(imm)
 				break
 			}
