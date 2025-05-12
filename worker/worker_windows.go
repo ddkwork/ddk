@@ -1,7 +1,6 @@
 package main
 
 import (
-	"gioui.org/app"
 	"gioui.org/layout"
 	"github.com/ddkwork/ddk/worker/BuyTomatoes"
 	"github.com/ddkwork/ddk/worker/DecodeRaw"
