@@ -149,7 +149,7 @@ func (c *WdkConfig) VisualStudio() *WdkConfig {
 	}))
 
 	for _, s := range []string{"shared", "km", "km/crt"} {
-		c.Includes = append(c.Includes, filepath.ToSlash(filepath.Join(c.Root, "Include", c.Version, s)))
+		c.Includes = append(c.Includes, filepath.Join(c.Root, "Include", c.Version, s))
 	}
 	kmdfVersionValues := make([]float64, 0)
 	for _, version := range kmdfVersions {
@@ -158,13 +158,20 @@ func (c *WdkConfig) VisualStudio() *WdkConfig {
 	}
 	kmdfVersionMax := 1.0 + slices.Max(kmdfVersionValues)/100.0
 	mylog.Success("max wdf kmdf version", kmdfVersionMax)
-	c.Includes = append(c.Includes, filepath.ToSlash(filepath.Join(root, strconv.FormatFloat(kmdfVersionMax, 'f', 2, 64))))
-	c.Includes = append(c.Includes, filepath.ToSlash(filepath.Join(c.VsInstallDir, "VC", "Tools", "MSVC", VCToolsVersion, "include")))
-	c.Includes = append(c.Includes, filepath.ToSlash(filepath.Join(c.VsInstallDir, "VC", "Tools", "MSVC", VCToolsVersion, "ATLMFC", "include")))
-	c.Includes = append(c.Includes, filepath.ToSlash(filepath.Join(c.VsInstallDir, "VC", "Auxiliary", "VS", "include")))
+	c.Includes = append(c.Includes, filepath.Join(root, strconv.FormatFloat(kmdfVersionMax, 'f', 2, 64)))
+	c.Includes = append(c.Includes, filepath.Join(c.VsInstallDir, "VC", "Tools", "MSVC", VCToolsVersion, "include"))
+	c.Includes = append(c.Includes, filepath.Join(c.VsInstallDir, "VC", "Tools", "MSVC", VCToolsVersion, "ATLMFC", "include"))
+	c.Includes = append(c.Includes, filepath.Join(c.VsInstallDir, "VC", "Auxiliary", "VS", "include"))
 	for _, s := range []string{"ucrt", "um", "shared", "winrt", "cppwinrt"} {
-		c.Includes = append(c.Includes, filepath.ToSlash(filepath.Join(c.Root, "Include", c.Version, s)))
+		c.Includes = append(c.Includes, filepath.Join(c.Root, "Include", c.Version, s))
 	}
+	for i, include := range c.Includes {
+		include = filepath.ToSlash(include)
+		include = strconv.Quote(include)
+		// c.Includes[i] = strconv.Quote(include)
+		c.Includes[i] = include
+	}
+	c.Includes = append(c.Includes, ".")
 	mylog.Struct(c)
 	return c
 }
