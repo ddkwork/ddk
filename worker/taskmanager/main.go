@@ -5,8 +5,8 @@ import (
 	"iter"
 
 	"gioui.org/layout"
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/stream/datasize"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/stream/datasize"
 	"github.com/ddkwork/ux"
 )
 

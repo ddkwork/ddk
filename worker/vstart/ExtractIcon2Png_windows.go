@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"image/png"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 	"github.com/gorpher/gowin32"
 )
 

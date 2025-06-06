@@ -6,7 +6,7 @@ import (
 	"log"
 	"reflect"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 // Parse the import directory.

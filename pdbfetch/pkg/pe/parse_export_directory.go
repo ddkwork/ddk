@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 // Parse the export directory.

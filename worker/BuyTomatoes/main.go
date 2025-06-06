@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"gioui.org/layout"
-	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/std/stream"
 	"github.com/ddkwork/ux"
 )
 

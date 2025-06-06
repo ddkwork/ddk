@@ -17,7 +17,7 @@ import (
 	// "github.com/ddkwork/ddk/worker/struct2table"
 	"github.com/ddkwork/ddk/worker/taskmanager"
 	"github.com/ddkwork/ddk/worker/vstart"
-	"github.com/ddkwork/golibrary/safemap"
+	"github.com/ddkwork/golibrary/std/safemap"
 	"github.com/ddkwork/ux"
 )
 

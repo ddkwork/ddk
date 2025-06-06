@@ -4,7 +4,7 @@ import (
 	"strings"
 
 	"github.com/ddkwork/ddk/xed"
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 func CheckPacker(filename string) {

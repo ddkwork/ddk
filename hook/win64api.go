@@ -5,7 +5,7 @@ package hook
 import (
 	"fmt"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 	wapi "github.com/iamacarpet/go-win64api"
 )
 

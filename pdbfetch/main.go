@@ -38,7 +38,7 @@ import (
 
 	"pdbfetch/pkg/pe"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 func probeWithUnderscore(path string) string {

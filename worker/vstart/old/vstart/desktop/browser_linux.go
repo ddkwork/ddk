@@ -13,7 +13,7 @@ package desktop
 import (
 	"os/exec"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 // Open asks the system to open the provided path or URL.

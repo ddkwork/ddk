@@ -11,7 +11,7 @@ import (
 
 	"github.com/edsrzf/mmap-go"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 // TODO: detect endianess instead of forcing LittleEndian

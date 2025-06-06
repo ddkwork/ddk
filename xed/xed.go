@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"iter"
 
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/stream"
 	"golang.org/x/arch/x86/x86asm"
 )
 

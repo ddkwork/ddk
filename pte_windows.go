@@ -4,7 +4,7 @@ import (
 	"github.com/ddkwork/ddk/xed"
 	"golang.org/x/arch/x86/x86asm"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 // MiGetPteAddress 手工操作:

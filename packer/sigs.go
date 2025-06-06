@@ -9,7 +9,7 @@ import (
 
 	"github.com/go-enry/go-enry/v2"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 // Compilers, Installers, Packers names as seen by DiE (Detect It Easy)

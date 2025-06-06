@@ -9,9 +9,9 @@ import (
 	"github.com/aquasecurity/table"
 	"github.com/ddkwork/ddk/winver"
 	"github.com/ddkwork/ddk/xed"
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/safemap"
-	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/safemap"
+	"github.com/ddkwork/golibrary/std/stream"
 )
 
 func DecodeTableByDll() {

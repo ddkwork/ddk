@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/stream"
 )
 
 // todo move into library
@@ -157,7 +157,7 @@ func (c *WdkConfig) VisualStudio() *WdkConfig {
 		kmdfVersionValues = append(kmdfVersionValues, mylog.Check2(strconv.ParseFloat(split[1], 64)))
 	}
 	kmdfVersionMax := 1.0 + slices.Max(kmdfVersionValues)/100.0
-	mylog.Success("max wdf kmdf version", kmdfVersionMax)
+	//	mylog.Success("max wdf kmdf version", kmdfVersionMax)
 	c.Includes = append(c.Includes, filepath.Join(root, strconv.FormatFloat(kmdfVersionMax, 'f', 2, 64)))
 	c.Includes = append(c.Includes, filepath.Join(c.VsInstallDir, "VC", "Tools", "MSVC", VCToolsVersion, "include"))
 	c.Includes = append(c.Includes, filepath.Join(c.VsInstallDir, "VC", "Tools", "MSVC", VCToolsVersion, "ATLMFC", "include"))
@@ -166,13 +166,13 @@ func (c *WdkConfig) VisualStudio() *WdkConfig {
 		c.Includes = append(c.Includes, filepath.Join(c.Root, "Include", c.Version, s))
 	}
 	for i, include := range c.Includes {
+		include = filepath.Clean(include)
 		include = filepath.ToSlash(include)
+		include = strings.ReplaceAll(include, " ", "^")
 		include = strconv.Quote(include)
-		// c.Includes[i] = strconv.Quote(include)
 		c.Includes[i] = include
 	}
-	c.Includes = append(c.Includes, ".")
-	mylog.Struct(c)
+	//mylog.Struct(c)
 	return c
 }
 
@@ -182,7 +182,7 @@ func (c *WdkConfig) findWdk() (ntddk string) {
 		if stream.IsDir(driver) {
 			c.Root = filepath.Join(driver, "10") // todo
 			c.Root = filepath.ToSlash(c.Root)
-			mylog.Success("wdk root", c.Root)
+			//mylog.Success("wdk root", c.Root)
 			break
 		}
 	}
@@ -193,7 +193,7 @@ func (c *WdkConfig) findWdk() (ntddk string) {
 	mylog.Check(filepath.WalkDir(c.Root, func(path string, d fs.DirEntry, err error) error {
 		if filepath.Base(path) == "ntddk.h" {
 			ntddk = filepath.ToSlash(path)
-			mylog.Success("ntddk.h", ntddk)
+			//mylog.Success("ntddk.h", ntddk)
 			return err
 		}
 		return err
@@ -202,7 +202,7 @@ func (c *WdkConfig) findWdk() (ntddk string) {
 	// C:/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/km/ntddk.h
 	cut := findVersion(ntddk, "Include", "km")
 	c.Version = cut
-	mylog.Success("wdk version", c.Version)
+	//	mylog.Success("wdk version", c.Version)
 	return
 }
 

@@ -15,7 +15,7 @@ import (
 
 	"github.com/saferwall/pe"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 type TestCOFFSymbol struct {

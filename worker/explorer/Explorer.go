@@ -7,11 +7,11 @@ import (
 	"time"
 
 	"gioui.org/layout"
-	"github.com/ddkwork/golibrary/stream"
-	"github.com/ddkwork/golibrary/stream/datasize"
+	"github.com/ddkwork/golibrary/std/stream"
+	"github.com/ddkwork/golibrary/std/stream/datasize"
 	"github.com/ddkwork/ux"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 func New() ux.Widget {

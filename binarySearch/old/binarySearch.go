@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/ddkwork/ddk/xed"
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/stream"
 )
 
 // D:\clone\systeminformer-master\SystemInformer

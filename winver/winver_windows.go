@@ -4,8 +4,8 @@ import (
 	"github.com/ddkwork/ddk/xed"
 	"github.com/hashicorp/go-version"
 
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/stream"
 )
 
 // WindowVersion ps --> $PSVersionTable

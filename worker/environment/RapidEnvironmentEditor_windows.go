@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"gioui.org/layout"
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/stream"
 	"github.com/ddkwork/ux"
 	"golang.org/x/sys/windows/registry"
 )

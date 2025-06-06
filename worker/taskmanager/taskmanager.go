@@ -1,8 +1,8 @@
 package taskmanager
 
 import (
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/stream/datasize"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/stream/datasize"
 	"github.com/ddkwork/ux"
 	"github.com/shirou/gopsutil/v3/process"
 )

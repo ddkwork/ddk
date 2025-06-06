@@ -8,7 +8,7 @@ import (
 	"fmt"
 
 	"github.com/ddkwork/ddk/hardwareinfo/cpuid"
-	"github.com/ddkwork/golibrary/stream"
+	"github.com/ddkwork/golibrary/std/stream"
 )
 
 func cpuid_low(arg1, arg2 uint32) (eax, ebx, ecx, edx uint32) // implemented in cpuidlow_amd64.s

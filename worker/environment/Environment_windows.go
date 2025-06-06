@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 	"golang.org/x/sys/windows/registry"
 )
 

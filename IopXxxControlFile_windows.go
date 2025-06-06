@@ -2,7 +2,7 @@ package ddk
 
 import (
 	"github.com/ddkwork/ddk/xed"
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 	"golang.org/x/arch/x86/x86asm"
 )
 

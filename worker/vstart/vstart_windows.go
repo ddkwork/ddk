@@ -11,10 +11,10 @@ import (
 
 	"gioui.org/layout"
 	"gioui.org/widget"
-	"github.com/ddkwork/golibrary/mylog"
-	"github.com/ddkwork/golibrary/safemap"
-	"github.com/ddkwork/golibrary/stream"
-	"github.com/ddkwork/golibrary/stream/desktop"
+	"github.com/ddkwork/golibrary/std/mylog"
+	"github.com/ddkwork/golibrary/std/safemap"
+	"github.com/ddkwork/golibrary/std/stream"
+	"github.com/ddkwork/golibrary/std/stream/desktop"
 	"github.com/ddkwork/ux"
 	"github.com/ddkwork/ux/resources/images"
 )
@@ -56,7 +56,7 @@ func New() ux.Widget {
 	elems := new(safemap.M[*ux.ButtonAnimation, *ux.ContextMenu])
 	for _, path := range paths {
 		key := ux.NewButton(new(widget.Clickable), ExtractIcon2Png(path), stream.AlignString(stream.BaseName(path), 5), func(gtx layout.Context) {
-			stream.RunCommandArgs("start", path)
+			stream.RunCommand("start", path)
 		})
 		value := ux.NewContextMenu()
 		value.Once.Do(func() {

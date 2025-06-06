@@ -5,7 +5,7 @@ import (
 
 	"github.com/ddkwork/ddk"
 	"github.com/ddkwork/ddk/winver"
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 	"github.com/saferwall/pe"
 )
 

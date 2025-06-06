@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	hardwareinfo "github.com/ddkwork/ddk/hardwareinfo"
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 func Test_hardware(t *testing.T) {

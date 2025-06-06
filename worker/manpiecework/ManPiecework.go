@@ -8,7 +8,7 @@ import (
 
 	"gioui.org/layout"
 	"gioui.org/widget"
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 	"github.com/ddkwork/ux"
 )
 

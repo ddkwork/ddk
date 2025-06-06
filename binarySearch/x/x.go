@@ -4,7 +4,7 @@ import (
 	"iter"
 	"strings"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 func main() {

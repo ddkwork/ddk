@@ -12,7 +12,7 @@ import (
 	"github.com/spyre-project/spyre/config"
 	"golang.org/x/sys/windows"
 
-	"github.com/ddkwork/golibrary/mylog"
+	"github.com/ddkwork/golibrary/std/mylog"
 )
 
 // func init() { scanner.RegisterSystemScanner(&systemScanner{}) }
