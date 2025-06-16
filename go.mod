@@ -1,11 +1,11 @@
 module github.com/ddkwork/ddk
 
-go 1.24.3
+go 1.25rc1
 
 require (
 	gioui.org v0.8.1-0.20250531011347-8104d527c746
 	github.com/aquasecurity/table v1.10.0
-	github.com/ddkwork/golibrary v0.1.4-0.20250605163732-5443832e2c55
+	github.com/ddkwork/golibrary v0.1.4-0.20250616120223-0a6e456032ab
 	github.com/ddkwork/ux v0.0.0-20250604121246-9887c8211ffa
 	github.com/go-enry/go-enry/v2 v2.9.2
 	github.com/gorpher/gowin32 v0.0.11

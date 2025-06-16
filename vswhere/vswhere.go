@@ -168,11 +168,11 @@ func (c *WdkConfig) VisualStudio() *WdkConfig {
 	for i, include := range c.Includes {
 		include = filepath.Clean(include)
 		include = filepath.ToSlash(include)
-		include = strings.ReplaceAll(include, " ", "^")
-		include = strconv.Quote(include)
+		//include = strings.ReplaceAll(include, " ", "^")//vlang not need
+		//include = strconv.Quote(include)
 		c.Includes[i] = include
 	}
-	//mylog.Struct(c)
+	mylog.Struct(c)
 	return c
 }
 
