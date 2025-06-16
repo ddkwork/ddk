@@ -5,8 +5,8 @@ go 1.25rc1
 require (
 	gioui.org v0.8.1-0.20250531011347-8104d527c746
 	github.com/aquasecurity/table v1.10.0
-	github.com/ddkwork/golibrary v0.1.4-0.20250616120223-0a6e456032ab
-	github.com/ddkwork/ux v0.0.0-20250616123803-664a6218d3f9
+	github.com/ddkwork/golibrary v0.1.5-0.20250616132247-c9b5bccc8ccf
+	github.com/ddkwork/ux v0.0.0-20250616131817-1d3a60654022
 	github.com/go-enry/go-enry/v2 v2.9.2
 	github.com/gorpher/gowin32 v0.0.11
 	github.com/hashicorp/go-version v1.7.0
