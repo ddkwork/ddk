@@ -27,7 +27,7 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc h1:U9qPSI2PIWSS1VwoXQT9A3Wy9MM3WgvqSxFWenqJduM=
 github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/daviddengcn/go-colortext v1.0.0/go.mod h1:zDqEI5NVUop5QPpVJUxE9UO10hRnmkD5G4Pmri9+m4c=
-github.com/ddkwork/golibrary v0.1.4-0.20250605163732-5443832e2c55 h1:od1bvYN0uKB4Rqtq+K6hAWgnIyy673yg4bLzzu5nVOA=
+github.com/ddkwork/golibrary v0.1.4-0.20250616120223-0a6e456032ab h1:od1bvYN0uKB4Rqtq+K6hAWgnIyy673yg4bLzzu5nVOA=
 github.com/ddkwork/ux v0.0.0-20250604121246-9887c8211ffa h1:uf/v1hqki6HhJpyezzc4G/YKpg4kwZYHm8a6rx8HAcg=
 github.com/ddkwork/ux v0.0.0-20250604121246-9887c8211ffa/go.mod h1:56C9cLZVitQYP6PyTq3+WOBi2QfSubI6LM0DDwtP3jc=
 github.com/dlclark/regexp2 v1.11.5 h1:Q/sSnsKerHeCkc/jSTNq1oCm7KiVgUMZRDUoRu0JQZQ=
