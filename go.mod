@@ -5,7 +5,7 @@ go 1.25rc1
 require (
 	gioui.org v0.8.1-0.20250531011347-8104d527c746
 	github.com/aquasecurity/table v1.10.0
-	github.com/ddkwork/golibrary v0.1.5-0.20250627073414-26b52a7347b5
+	github.com/ddkwork/golibrary v0.1.5-0.20250816073422-ec5c841d4409
 	github.com/ddkwork/ux v0.0.0-20250625080058-8310a9969f4f
 	github.com/go-enry/go-enry/v2 v2.9.2
 	github.com/gorpher/gowin32 v0.0.11
@@ -56,10 +56,10 @@ require (
 	golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b // indirect
 	golang.org/x/exp/shiny v0.0.0-20250620022241-b7579e27df2b // indirect
 	golang.org/x/image v0.28.0 // indirect
-	golang.org/x/mod v0.25.0 // indirect
+	golang.org/x/mod v0.27.0 // indirect
 	golang.org/x/net v0.41.0 // indirect
 	golang.org/x/term v0.32.0 // indirect
-	golang.org/x/text v0.26.0 // indirect
+	golang.org/x/text v0.28.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/toast.v1 v1.0.0-20180812000517-0a84660828b2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
